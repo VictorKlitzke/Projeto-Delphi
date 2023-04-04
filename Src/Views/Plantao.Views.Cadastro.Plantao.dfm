@@ -89,14 +89,14 @@ object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
         Height = 33
         Align = alClient
         Alignment = taCenter
-        Caption = 'lbForm'
+        Caption = 'Cadastrar Plant'#227'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWhite
         Font.Height = -21
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitWidth = 70
+        ExplicitWidth = 173
         ExplicitHeight = 30
       end
       object btnClose: TcxButton

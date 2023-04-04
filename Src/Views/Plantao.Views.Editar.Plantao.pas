@@ -72,7 +72,7 @@ end;
 
 function TPlantaoViewsEditarPlantao.Editar(UID: Integer): Integer;
 begin
-  FEditar.Campo('ID', UID).Editar;
+  FEditar.Filtrar('ID', UID).Editar;
 end;
 
 procedure TPlantaoViewsEditarPlantao.FormCreate(Sender: TObject);

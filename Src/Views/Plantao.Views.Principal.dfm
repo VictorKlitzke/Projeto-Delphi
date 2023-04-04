@@ -21,7 +21,7 @@ object PlantaoPrincipal: TPlantaoPrincipal
     Left = 0
     Top = 0
     Width = 612
-    Height = 49
+    Height = 33
     Align = alTop
     BevelOuter = bvNone
     Color = clGrayText
@@ -31,7 +31,7 @@ object PlantaoPrincipal: TPlantaoPrincipal
       Left = 0
       Top = 0
       Width = 557
-      Height = 49
+      Height = 33
       Align = alClient
       AutoSize = True
       Center = True
@@ -559,22 +559,23 @@ object PlantaoPrincipal: TPlantaoPrincipal
         2040800001020408102040800001020408102040800001020408102040800001
         02040810204080000102040810204080000102040810204080C0BA23F0BF0042
         247E16A1C43B890000000049454E44AE426082}
-      ExplicitWidth = 500
-      ExplicitHeight = 703
+      ExplicitWidth = 473
+      ExplicitHeight = 17
     end
     object pnClose: TPanel
       Left = 557
       Top = 0
       Width = 55
-      Height = 49
+      Height = 33
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitHeight = 49
       object btnClose: TcxButton
         Left = -2
         Top = 0
         Width = 57
-        Height = 49
+        Height = 33
         Align = alRight
         OptionsImage.Glyph.SourceDPI = 96
         OptionsImage.Glyph.Data = {
@@ -601,25 +602,26 @@ object PlantaoPrincipal: TPlantaoPrincipal
         SpeedButtonOptions.Flat = True
         TabOrder = 0
         OnClick = btnCloseClick
+        ExplicitHeight = 49
       end
     end
   end
   object pnMenu: TPanel
     Left = 0
-    Top = 49
-    Width = 137
-    Height = 427
-    Align = alLeft
+    Top = 432
+    Width = 612
+    Height = 44
+    Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
     VerticalAlignment = taAlignTop
     object btnCadastroPlantao: TcxButton
       AlignWithMargins = True
-      Left = 3
+      Left = 271
       Top = 3
-      Width = 131
-      Height = 73
-      Align = alTop
+      Width = 166
+      Height = 38
+      Align = alRight
       Caption = 'Cadastrar Plant'#227'o'
       OptionsImage.Glyph.SourceDPI = 96
       OptionsImage.Glyph.Data = {
@@ -667,13 +669,15 @@ object PlantaoPrincipal: TPlantaoPrincipal
       SpeedButtonOptions.Flat = True
       TabOrder = 0
       OnClick = btnCadastroPlantaoClick
+      ExplicitLeft = 368
+      ExplicitHeight = 158
     end
     object btneditar: TcxButton
-      Left = 0
-      Top = 79
-      Width = 137
-      Height = 75
-      Align = alTop
+      Left = 440
+      Top = 0
+      Width = 172
+      Height = 44
+      Align = alRight
       Caption = 'Editar Plant'#227'o'
       OptionsImage.Glyph.SourceDPI = 96
       OptionsImage.Glyph.Data = {
@@ -720,27 +724,36 @@ object PlantaoPrincipal: TPlantaoPrincipal
       SpeedButtonOptions.Flat = True
       TabOrder = 1
       OnClick = btneditarClick
+      ExplicitHeight = 164
     end
   end
   object pnContent: TPanel
-    Left = 137
-    Top = 49
-    Width = 475
-    Height = 427
+    Left = 0
+    Top = 33
+    Width = 612
+    Height = 399
     Align = alClient
+    BevelOuter = bvNone
     TabOrder = 2
+    ExplicitLeft = 137
+    ExplicitTop = 49
+    ExplicitWidth = 475
+    ExplicitHeight = 427
     object Panel1: TPanel
-      Left = 1
-      Top = 1
-      Width = 473
+      Left = 0
+      Top = 0
+      Width = 612
       Height = 32
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 473
       object Label1: TLabel
         Left = 0
         Top = 0
-        Width = 473
+        Width = 612
         Height = 30
         Align = alTop
         Alignment = taCenter
@@ -755,15 +768,21 @@ object PlantaoPrincipal: TPlantaoPrincipal
       end
     end
     object cxGrid1: TcxGrid
-      Left = 1
-      Top = 33
-      Width = 473
-      Height = 393
+      Left = 0
+      Top = 32
+      Width = 612
+      Height = 367
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
+      BiDiMode = bdRightToLeftNoAlign
       BorderStyle = cxcbsNone
+      ParentBiDiMode = False
       TabOrder = 1
+      ExplicitLeft = 1
+      ExplicitTop = 33
+      ExplicitWidth = 610
+      ExplicitHeight = 349
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = cxGrid1DBTableView1CellDblClick
@@ -775,6 +794,7 @@ object PlantaoPrincipal: TPlantaoPrincipal
         OptionsSelection.CellSelect = False
         OptionsView.ColumnAutoWidth = True
         OptionsView.GroupByBox = False
+        OptionsView.Header = False
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -782,7 +802,7 @@ object PlantaoPrincipal: TPlantaoPrincipal
     end
   end
   object dsConsultas: TDataSource
-    Left = 16
+    Left = 80
     Top = 224
   end
 end

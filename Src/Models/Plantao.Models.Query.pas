@@ -16,6 +16,7 @@ type
     ['{BB764DDB-BCBE-4C1F-8B4F-5A949D243778}']
 
     function DataSource(var ADataSource: TDataSource): iQuery;
+    function DataSet: TDataSet;
     function Abrir: iQuery;
     function Fechar: iQuery;
 
@@ -31,6 +32,8 @@ type
 
     function Campo(AField: string): TField; overload;
     function Campo(AField: string; AValue: Variant): iQuery; overload;
+
+    function Filtrar(ACampo: string; AValor: Variant): iQuery;
 
     function PosicaoSalvar: iQuery;
     function PosicaoVoltar: iQuery;
@@ -43,15 +46,13 @@ type
 
     FBookMark: TBookmark;
 
-    procedure AntesAbrir(DataSet: TDataSet);
-    procedure DepoisAbrir(DataSet: TDataSet);
   public
     constructor Create;
     destructor Destroy; override;
     class function New: iQuery;
 
-    function SomenteLeitura: iQuery;
     function DataSource(var ADataSource: TDataSource): iQuery;
+    function DataSet: TDataSet;
     function Abrir: iQuery;
     function Fechar: iQuery;
 
@@ -67,6 +68,8 @@ type
 
     function Campo(AField: string): TField; overload;
     function Campo(AField: string; AValue: Variant): iQuery; overload;
+
+    function Filtrar(ACampo: string; AValor: Variant): iQuery;
 
     function PosicaoSalvar: iQuery;
     function PosicaoVoltar: iQuery;
@@ -99,11 +102,6 @@ begin
   FQuery.Insert;
 end;
 
-procedure TQuery.AntesAbrir(DataSet: TDataSet);
-begin
-
-end;
-
 function TQuery.Apagar: iQuery;
 begin
  Result := Self;
@@ -116,7 +114,7 @@ end;
 
 function TQuery.Campo(AField: string; AValue: Variant): iQuery;
 begin
- Result := Self;
+  Result := Self;
   if not (FQuery.State in dsEditModes) then
     raise QueryErroEdicao.Create('Não é possivel editar um campo se a query não estiver em edição');
 
@@ -144,34 +142,17 @@ FConexao := TConexao.New;
   FQuery.DMLRefresh := True;
   FQuery.SpecificOptions.Values['FetchAll'] := 'False';
   FQuery.FetchRows := 50;
+end;
 
-  FQuery.AfterOpen := DepoisAbrir;
-  FQuery.BeforeOpen := AntesAbrir;
+function TQuery.DataSet: TDataSet;
+begin
+  Result := FQuery;
 end;
 
 function TQuery.DataSource(var ADataSource: TDataSource): iQuery;
 begin
   Result := Self;
   ADataSource.DataSet := FQuery;
-end;
-
-procedure TQuery.DepoisAbrir(DataSet: TDataSet);
-var
-  LField: TField;
-begin
-  for LField in DataSet.Fields do
-  begin
-    if LField.FieldName = 'ID' then
-    begin
-      LField.AutoGenerateValue := arAutoInc;
-      LField.Required := False;
-    end;
-
-    case LField.DataType of
-      ftSmallint, ftInteger: TFloatField(LField).DisplayFormat := '#,##0';
-      ftFloat, ftCurrency: TFloatField(LField).DisplayFormat := '#,##0.00';
-    end;
-  end;
 end;
 
 destructor TQuery.Destroy;
@@ -196,6 +177,14 @@ function TQuery.Fechar: iQuery;
 begin
   Result := Self;
   FQuery.Close;
+end;
+
+function TQuery.Filtrar(ACampo: string; AValor: Variant): iQuery;
+begin
+  Result := Self;
+  FQuery.DeleteWhere;
+  FQuery.AddWhere(ACampo + ' = :' + ACampo);
+  FQuery.ParamByName(ACampo).Value := AValor;
 end;
 
 class function TQuery.New: iQuery;
@@ -237,12 +226,6 @@ begin
 
   if FQuery.CachedUpdates then
     FQuery.ApplyUpdates();
-end;
-
-function TQuery.SomenteLeitura: iQuery;
-begin
-  Result := Self;
-  FQuery.ReadOnly := True;
 end;
 
 function TQuery.SQL(AValue: string): iQuery;
