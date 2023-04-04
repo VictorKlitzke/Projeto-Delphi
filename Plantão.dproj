@@ -108,6 +108,10 @@
         </DCCReference>
         <DCCReference Include="Src\Models\Plantao.Models.Conexao.pas"/>
         <DCCReference Include="Src\Models\Plantao.Models.Query.pas"/>
+        <DCCReference Include="Src\Views\Plantao.Views.Cadastro.Plantao.pas">
+            <Form>PlantaoViewCadastroPlantao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

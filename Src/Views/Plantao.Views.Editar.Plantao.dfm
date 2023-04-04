@@ -1,8 +1,8 @@
-object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
+object PlantaoViewsEditarPlantao: TPlantaoViewsEditarPlantao
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'PlantaoViewCadastroPlantao'
+  Caption = 'PlantaoViewsEditarPlantao'
   ClientHeight = 241
   ClientWidth = 378
   Color = clBtnFace
@@ -14,7 +14,6 @@ object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnContent: TPanel
@@ -27,6 +26,8 @@ object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
     Color = clGray
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -89
+    ExplicitTop = -38
     object Label1: TLabel
       Left = 56
       Top = 41
@@ -53,26 +54,20 @@ object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object edCadastroPlantao: TcxTextEdit
-      Left = 56
-      Top = 117
-      TabOrder = 0
-      Width = 257
-    end
-    object btnCadastrar: TcxButton
+    object btnEditar: TcxButton
       Left = 56
       Top = 168
       Width = 257
       Height = 25
-      Caption = 'Cadastrar'
+      Caption = 'Editar'
       Colors.Default = clBlack
       Colors.DefaultText = clBlack
       Colors.Normal = clBlue
       Colors.Pressed = clBlack
       PaintStyle = bpsCaption
       SpeedButtonOptions.CanBeFocused = False
-      TabOrder = 1
-      OnClick = btnCadastrarClick
+      TabOrder = 0
+      OnClick = btnEditarClick
     end
     object Panel1: TPanel
       Left = 0
@@ -81,7 +76,7 @@ object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
       Height = 33
       Align = alTop
       BevelOuter = bvNone
-      TabOrder = 2
+      TabOrder = 1
       object lbForm: TLabel
         Left = 0
         Top = 0
@@ -89,15 +84,14 @@ object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
         Height = 33
         Align = alClient
         Alignment = taCenter
-        Caption = 'lbForm'
+        Caption = 'Editar Plant'#227'o'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWhite
         Font.Height = -21
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitWidth = 70
-        ExplicitHeight = 30
+        ExplicitWidth = 366
       end
       object btnClose: TcxButton
         Left = 321
@@ -132,15 +126,25 @@ object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
         OnClick = btnCloseClick
       end
     end
-    object edData: TcxDateEdit
+    object edNome: TcxDBTextEdit
       Left = 56
-      Top = 64
+      Top = 128
+      DataBinding.DataField = 'NOME'
+      DataBinding.DataSource = dsEditar
+      TabOrder = 2
+      Width = 257
+    end
+    object edData: TcxDBDateEdit
+      Left = 56
+      Top = 67
+      DataBinding.DataField = 'DATA'
+      DataBinding.DataSource = dsEditar
       TabOrder = 3
       Width = 257
     end
   end
-  object dsDados: TDataSource
-    Left = 16
-    Top = 72
+  object dsEditar: TDataSource
+    Left = 200
+    Top = 200
   end
 end

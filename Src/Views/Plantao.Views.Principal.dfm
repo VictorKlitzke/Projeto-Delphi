@@ -27,7 +27,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
     Color = clGrayText
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 703
     object Image1: TImage
       Left = 0
       Top = 0
@@ -571,7 +570,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 648
       object btnClose: TcxButton
         Left = -2
         Top = 0
@@ -669,9 +667,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
       SpeedButtonOptions.Flat = True
       TabOrder = 0
       OnClick = btnCadastroPlantaoClick
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 65
     end
     object btneditar: TcxButton
       Left = 0
@@ -725,9 +720,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
       SpeedButtonOptions.Flat = True
       TabOrder = 1
       OnClick = btneditarClick
-      ExplicitLeft = 32
-      ExplicitTop = 112
-      ExplicitWidth = 75
     end
   end
   object pnContent: TPanel
@@ -737,10 +729,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
     Height = 427
     Align = alClient
     TabOrder = 2
-    ExplicitLeft = 71
-    ExplicitTop = 41
-    ExplicitWidth = 638
-    ExplicitHeight = 479
     object Panel1: TPanel
       Left = 1
       Top = 1
@@ -776,10 +764,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 1
-      ExplicitLeft = 104
-      ExplicitTop = 112
-      ExplicitWidth = 250
-      ExplicitHeight = 200
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = cxGrid1DBTableView1CellDblClick

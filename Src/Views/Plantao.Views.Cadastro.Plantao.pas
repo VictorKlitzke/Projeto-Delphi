@@ -108,7 +108,6 @@ begin
       on E: Exception do
         MessageDlg('Erro ao cadastrar plantão: ' + E.Message, mtError, [mbOk], 0);
     end;
-    CarregarDados;
   edCadastroPlantao.Clear;
   edData.Clear;
 end;

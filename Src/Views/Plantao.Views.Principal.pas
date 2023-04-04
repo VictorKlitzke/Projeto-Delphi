@@ -20,6 +20,7 @@ uses
   Vcl.StdCtrls,
   cxButtons,
   Plantao.Views.Cadastro.Plantao,
+  Plantao.Views.Editar.Plantao,
   dxGDIPlusClasses,
   Plantao.Models.Query,
   cxControls,
@@ -95,7 +96,15 @@ end;
 
 procedure TPlantaoPrincipal.btneditarClick(Sender: TObject);
 begin
-  MostrarForm(FConsulta.Campo('ID').AsInteger);
+  if not Assigned(PlantaoViewsEditarPlantao) then
+    Application.CreateForm(TPlantaoViewsEditarPlantao, PlantaoViewsEditarPlantao);
+
+  PlantaoViewsEditarPlantao.Editar(dsConsultas.DataSet.FieldByName('ID').AsInteger);
+
+  PlantaoViewsEditarPlantao.ShowModal;
+  FreeAndNil(PlantaoViewsEditarPlantao);
+
+  Pesquisar;
 end;
 
 procedure TPlantaoPrincipal.cxGrid1DBTableView1CellDblClick(
@@ -117,11 +126,13 @@ end;
 
 procedure TPlantaoPrincipal.FormCreate(Sender: TObject);
 begin
+  inherited;
   MontarQuery;
 end;
 
 procedure TPlantaoPrincipal.FormShow(Sender: TObject);
 begin
+  inherited;
   Pesquisar;
 end;
 
@@ -139,39 +150,24 @@ begin
 
 end;
 
-procedure TPlantaoPrincipal.MostrarForm(AID: Integer);
+procedure TPlantaoPrincipal.MostrarForm(AID: Integer = 0);
 begin
-  if not Assigned(PlantaoViewCadastroPlantao) then
+  try
+    if not Assigned(PlantaoViewCadastroPlantao) then
     Application.CreateForm(TPlantaoViewCadastroPlantao, PlantaoViewCadastroPlantao);
 
-  try
-    with PlantaoViewCadastroPlantao do
-    begin
-      lbForm.Caption := 'Cadastrar Plantão';
+    PlantaoViewCadastroPlantao.ShowModal;
 
-      if AID <> 0 then
-        lbForm.Caption := 'Editar Plantão';
-
-      ID := AID;
-
-      ShowModal;
-    end;
-
+    Pesquisar;
   finally
-
-    if PlantaoViewCadastroPlantao.ModalResult = mrOk then
-      Pesquisar;
-
-   FreeAndNil(PlantaoViewCadastroPlantao);
+    FreeAndNil(PlantaoViewCadastroPlantao);
   end;
 end;
 
 procedure TPlantaoPrincipal.Pesquisar;
 begin
   FConsulta
-    .PosicaoSalvar
-    .Abrir
-    .PosicaoVoltar;
+    .Abrir;
 
   with cxGrid1DBTableView1 do
   begin
