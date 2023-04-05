@@ -33,8 +33,6 @@ type
     function Campo(AField: string): TField; overload;
     function Campo(AField: string; AValue: Variant): iQuery; overload;
 
-    function Filtrar(ACampo: string; AValor: Variant): iQuery;
-
     function PosicaoSalvar: iQuery;
     function PosicaoVoltar: iQuery;
   end;
@@ -68,8 +66,6 @@ type
 
     function Campo(AField: string): TField; overload;
     function Campo(AField: string; AValue: Variant): iQuery; overload;
-
-    function Filtrar(ACampo: string; AValor: Variant): iQuery;
 
     function PosicaoSalvar: iQuery;
     function PosicaoVoltar: iQuery;
@@ -177,14 +173,6 @@ function TQuery.Fechar: iQuery;
 begin
   Result := Self;
   FQuery.Close;
-end;
-
-function TQuery.Filtrar(ACampo: string; AValor: Variant): iQuery;
-begin
-  Result := Self;
-  FQuery.DeleteWhere;
-  FQuery.AddWhere(ACampo + ' = :' + ACampo);
-  FQuery.ParamByName(ACampo).Value := AValor;
 end;
 
 class function TQuery.New: iQuery;

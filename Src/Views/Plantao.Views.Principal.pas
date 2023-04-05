@@ -48,7 +48,6 @@ type
     pnContent: TPanel;
     pnClose: TPanel;
     btnClose: TcxButton;
-    Image1: TImage;
     btnCadastroPlantao: TcxButton;
     Panel1: TPanel;
     cxGrid1DBTableView1: TcxGridDBTableView;
@@ -99,7 +98,7 @@ begin
   if not Assigned(PlantaoViewsEditarPlantao) then
     Application.CreateForm(TPlantaoViewsEditarPlantao, PlantaoViewsEditarPlantao);
 
-  PlantaoViewsEditarPlantao.Editar(dsConsultas.DataSet.FieldByName('ID').AsInteger);
+  PlantaoViewsEditarPlantao.EditarP(dsConsultas.DataSet.FieldByName('ID').AsInteger);
 
   PlantaoViewsEditarPlantao.ShowModal;
   FreeAndNil(PlantaoViewsEditarPlantao);

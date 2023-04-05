@@ -46,7 +46,7 @@ type
   private
     FEditar: iQuery;
   public
-    function Editar(UID: Integer): Integer;
+    function EditarP(UID: Integer): Integer;
   end;
 
 var
@@ -70,9 +70,9 @@ begin
   ModalResult := mrOk;
 end;
 
-function TPlantaoViewsEditarPlantao.Editar(UID: Integer): Integer;
+function TPlantaoViewsEditarPlantao.EditarP(UID: Integer): Integer;
 begin
-  FEditar.Filtrar('ID', UID).Editar;
+  FEditar.Campo('ID', UID).Editar;
 end;
 
 procedure TPlantaoViewsEditarPlantao.FormCreate(Sender: TObject);

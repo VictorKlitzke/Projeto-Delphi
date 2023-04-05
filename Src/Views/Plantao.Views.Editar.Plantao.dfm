@@ -26,8 +26,6 @@ object PlantaoViewsEditarPlantao: TPlantaoViewsEditarPlantao
     Color = clGray
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -89
-    ExplicitTop = -38
     object Label1: TLabel
       Left = 56
       Top = 41
@@ -91,7 +89,8 @@ object PlantaoViewsEditarPlantao: TPlantaoViewsEditarPlantao
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitWidth = 366
+        ExplicitWidth = 138
+        ExplicitHeight = 30
       end
       object btnClose: TcxButton
         Left = 321
