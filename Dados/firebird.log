@@ -1,0 +1,10 @@
+
+VICTOR-PC	Mon Apr 10 10:42:40 2023
+	INET/inet_error: send errno = 10053, server host = localhost, address = ::1/3050
+
+
+VICTOR-PC	Mon Apr 10 10:42:40 2023
+	REMOTE INTERFACE/gds__detach: Unsuccesful detach from database.
+	Uncommitted work may have been lost.
+	Error writing data to the connection.
+

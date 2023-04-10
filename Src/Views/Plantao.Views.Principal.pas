@@ -39,7 +39,8 @@ uses
   cxGridCustomTableView,
   cxGridTableView,
   cxGridDBTableView,
-  cxGrid;
+  cxGrid, frxClass, frxDBSet, MemDS, DBAccess, Uni, frxDACComponents,
+  frxUniDACComponents;
 
 type
   TPlantaoPrincipal = class(TForm)
@@ -56,6 +57,11 @@ type
     dsConsultas: TDataSource;
     Label1: TLabel;
     btneditar: TcxButton;
+    Plantao: TUniConnection;
+    img: TImage;
+    frxUniDACComponents1: TfrxUniDACComponents;
+    btnImprimir: TcxButton;
+    ReportPlantao: TfrxReport;
     procedure btnCloseClick(Sender: TObject);
     procedure btnCadastroPlantaoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -64,6 +70,7 @@ type
     procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure btnImprimirClick(Sender: TObject);
   private
     FConsulta: iQuery;
 
@@ -106,6 +113,11 @@ begin
   Pesquisar;
 end;
 
+procedure TPlantaoPrincipal.btnImprimirClick(Sender: TObject);
+begin
+  ReportPlantao.ShowReport;
+end;
+
 procedure TPlantaoPrincipal.cxGrid1DBTableView1CellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
@@ -146,7 +158,6 @@ begin
     .SQL('  P.DATA')
     .SQL('FROM')
     .SQL('  PLANTAO P');
-
 end;
 
 procedure TPlantaoPrincipal.MostrarForm(AID: Integer = 0);
@@ -175,5 +186,4 @@ begin
     ApplyBestFit();
   end;
 end;
-
 end.
