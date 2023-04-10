@@ -22,6 +22,7 @@ uses
   Plantao.Views.Cadastro.Plantao,
   Plantao.Views.Editar.Plantao,
   dxGDIPlusClasses,
+  Plantao.Models.Conexao,
   Plantao.Models.Query,
   cxControls,
   cxStyles,
@@ -39,8 +40,8 @@ uses
   cxGridCustomTableView,
   cxGridTableView,
   cxGridDBTableView,
-  cxGrid, frxClass, frxDBSet, MemDS, DBAccess, Uni, frxDACComponents,
-  frxUniDACComponents;
+  cxGrid, frxClass, frxDBSet, MemDS, DBAccess, frxDACComponents,
+  frxUniDACComponents, Uni;
 
 type
   TPlantaoPrincipal = class(TForm)
@@ -57,11 +58,11 @@ type
     dsConsultas: TDataSource;
     Label1: TLabel;
     btneditar: TcxButton;
-    Plantao: TUniConnection;
     img: TImage;
-    frxUniDACComponents1: TfrxUniDACComponents;
     btnImprimir: TcxButton;
     ReportPlantao: TfrxReport;
+    Plantao: TUniConnection;
+    frxUniDACComponents1: TfrxUniDACComponents;
     procedure btnCloseClick(Sender: TObject);
     procedure btnCadastroPlantaoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -73,6 +74,7 @@ type
     procedure btnImprimirClick(Sender: TObject);
   private
     FConsulta: iQuery;
+    FConexao: iConexao;
 
     procedure MontarQuery;
     procedure Pesquisar;
@@ -157,10 +159,12 @@ begin
     .SQL('  P.NOME,')
     .SQL('  P.DATA')
     .SQL('FROM')
-    .SQL('  PLANTAO P');
+    .SQL('  PLANTAO P')
+    .SQL('ORDER BY')
+    .SQL('  P.DATA');
 end;
 
-procedure TPlantaoPrincipal.MostrarForm(AID: Integer = 0);
+procedure TPlantaoPrincipal.MostrarForm(AID: Integer);
 begin
   try
     if not Assigned(PlantaoViewCadastroPlantao) then

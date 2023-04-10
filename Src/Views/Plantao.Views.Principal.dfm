@@ -6361,7 +6361,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
     BevelOuter = bvNone
     TabOrder = 1
     VerticalAlignment = taAlignTop
-    ExplicitTop = 438
     object btnCadastroPlantao: TcxButton
       AlignWithMargins = True
       Left = 271
@@ -6561,7 +6560,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
       BorderStyle = cxcbsNone
       ParentBiDiMode = False
       TabOrder = 1
-      ExplicitTop = 29
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellDblClick = cxGrid1DBTableView1CellDblClick
@@ -6584,23 +6582,6 @@ object PlantaoPrincipal: TPlantaoPrincipal
   object dsConsultas: TDataSource
     Left = 80
     Top = 224
-  end
-  object Plantao: TUniConnection
-    ProviderName = 'interBase'
-    Database = 'C:\Projetos\Plant'#227'o\Dados\DADOS.FDB'
-    SpecificOptions.Strings = (
-      'interBase.ClientLibrary=C:\Projetos\Plant'#227'o\Dados\fbclient.dll')
-    Username = 'SYSDBA'
-    Server = 'localhost'
-    Connected = True
-    Left = 464
-    Top = 184
-    EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
-  end
-  object frxUniDACComponents1: TfrxUniDACComponents
-    DefaultDatabase = Plantao
-    Left = 464
-    Top = 128
   end
   object ReportPlantao: TfrxReport
     Version = '6.5.10'
@@ -7190,5 +7171,23 @@ object PlantaoPrincipal: TPlantaoPrincipal
         end
       end
     end
+  end
+  object Plantao: TUniConnection
+    ProviderName = 'interBase'
+    Port = 3050
+    Database = 'C:\Projetos\Plant'#227'o\Dados\DADOS.FDB'
+    SpecificOptions.Strings = (
+      'interBase.ClientLibrary=C:\Projetos\Plant'#227'o\Dados\fbclient.dll')
+    Username = 'SYSDBA'
+    Server = '127.0.0.1'
+    Connected = True
+    Left = 296
+    Top = 224
+    EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
+  end
+  object frxUniDACComponents1: TfrxUniDACComponents
+    DefaultDatabase = Plantao
+    Left = 408
+    Top = 216
   end
 end
