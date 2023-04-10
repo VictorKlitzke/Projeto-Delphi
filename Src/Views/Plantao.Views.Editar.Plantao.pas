@@ -72,7 +72,10 @@ end;
 
 function TPlantaoViewsEditarPlantao.EditarP(UID: Integer): Integer;
 begin
-  FEditar.Campo('ID', UID).Editar;
+  if not FEditar.DataSet.Active then
+    FEditar.DataSet.Open;
+
+  FEditar.Editar.Campo('ID', UID).Abrir;
 end;
 
 procedure TPlantaoViewsEditarPlantao.FormCreate(Sender: TObject);

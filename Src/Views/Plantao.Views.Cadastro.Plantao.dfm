@@ -135,6 +135,7 @@ object PlantaoViewCadastroPlantao: TPlantaoViewCadastroPlantao
     object edData: TcxDateEdit
       Left = 56
       Top = 64
+      Properties.OnChange = edDataPropertiesChange
       TabOrder = 3
       Width = 257
     end

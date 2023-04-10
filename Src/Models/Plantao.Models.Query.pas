@@ -43,7 +43,6 @@ type
     FQuery: TUniQuery;
 
     FBookMark: TBookmark;
-
   public
     constructor Create;
     destructor Destroy; override;
@@ -79,7 +78,7 @@ function TQuery.Abrir: iQuery;
 begin
   Result := Self;
 
-  if FQuery.SQL.Text = '' then
+  if FQuery.SQL.Text = 'ID' then
     raise QueryErroEdicao.Create('Não é possível abrir uma query sem instrução SQL');
 
   if FQuery.Active then
@@ -111,7 +110,7 @@ end;
 function TQuery.Campo(AField: string; AValue: Variant): iQuery;
 begin
   Result := Self;
-  if not (FQuery.State in dsEditModes) then
+  if not (FQuery.State in [dsEdit, dsInsert]) then
     raise QueryErroEdicao.Create('Não é possivel editar um campo se a query não estiver em edição');
 
   FQuery.FieldByName(AField).Value := AValue;

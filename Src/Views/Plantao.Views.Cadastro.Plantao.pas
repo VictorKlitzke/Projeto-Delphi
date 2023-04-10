@@ -20,7 +20,8 @@ uses
   cxContainer,
   cxEdit,
   Vcl.ComCtrls,
-  dxCore, cxDateUtils,
+  dxCore,
+  cxDateUtils,
   Vcl.Menus,
   Vcl.StdCtrls,
   cxButtons,
@@ -47,6 +48,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure edDataPropertiesChange(Sender: TObject);
   private
     FCadastroProduto : iQuery;
     FID : Integer;
@@ -89,7 +91,6 @@ begin
     MessageDlg('Preencha todos os campos antes de cadastrar o plantão!', mtWarning, [mbOk], 0);
     Exit;
   end;
-
   begin
     try
       FCadastroProduto := TQuery
@@ -125,6 +126,11 @@ begin
     FCadastroProduto.Salvar;
 end;
 
+procedure TPlantaoViewCadastroPlantao.edDataPropertiesChange(Sender: TObject);
+begin
+  FData := Date();
+end;
+
 procedure TPlantaoViewCadastroPlantao.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -134,6 +140,7 @@ end;
 procedure TPlantaoViewCadastroPlantao.FormShow(Sender: TObject);
 begin
   inherited;
+  edData.Date := Date();
   CarregarDados;
 end;
 
