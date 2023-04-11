@@ -7181,6 +7181,7 @@ object PlantaoPrincipal: TPlantaoPrincipal
     Username = 'SYSDBA'
     Server = '127.0.0.1'
     Connected = True
+    LoginPrompt = False
     Left = 296
     Top = 224
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
